@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Template LaunchAgent. install.sh substitutes __PREFIX__ and __LOG__ with
+  real absolute paths (launchd does not expand ~ or $HOME) and installs the
+  result to ~/Library/LaunchAgents/com.wispr-flow.clipboard.plist.
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.wispr-flow.clipboard</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>__PREFIX__/.local/bin/wispr-clip-watch.sh</string>
+    </array>
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>WISPR_CLIP_LOG</key>
+        <string>__LOG__</string>
+    </dict>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <true/>
+    <key>ProcessType</key>
+    <string>Background</string>
+    <key>StandardOutPath</key>
+    <string>__LOG__</string>
+    <key>StandardErrorPath</key>
+    <string>__LOG__</string>
+</dict>
+</plist>
